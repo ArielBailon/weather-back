@@ -2,11 +2,16 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 const connectDB = require('./config/db');
+const cors = require("cors");
+
 
 // Connect database
 connectDB();
 
 const app = express();
+
+// Middleware to allow CORS
+app.use(cors());
 
 // Sets up express middleware to handle/parse JSON data and access to it through req.body
 app.use(express.json());
